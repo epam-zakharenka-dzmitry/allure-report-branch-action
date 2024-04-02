@@ -53,10 +53,6 @@ try {
     
     // log
     console.log({
-        report_dir: sourceReportDir,
-        gh_pages: ghPagesPath,
-        report_id: reportId,
-        runUniqueId,
         ref: github.context.ref,
         repo: github.context.repo,
         branchName,
