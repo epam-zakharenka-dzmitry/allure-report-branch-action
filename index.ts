@@ -67,16 +67,24 @@ try {
         maxReports,
     })
 
+    console.log('Debug point #1')
+
     if (!(await isFileExist(ghPagesPath))) {
         throw new Error("Folder with gh-pages branch doesn't exist: " + ghPagesPath)
     }
+
+    console.log('Debug point #2')
 
     if (!(await isAllureResultsOk(sourceReportDir))) {
         throw new Error('There were issues with the allure-results, see error above.')
     }
 
+    console.log('Debug point #3')
+
     // action
     await io.mkdirP(reportBaseDir)
+
+    console.log('Debug point #4')
 
     // cleanup (should be before the folder listing)
     if (branchCleanupEnabled) {
@@ -85,6 +93,8 @@ try {
     if (maxReports > 0) {
         await cleanupOutdatedReports(ghPagesBaseDir, maxReports)
     }
+
+    console.log('Debug point #5')
 
     // folder listing
     if (listDirs) {
@@ -96,6 +106,8 @@ try {
     if (listDirsBranch) {
         await writeFolderListing(ghPagesPath, path.join(baseDir, branchName))
     }
+
+    console.log('Debug point #6')
 
     // process allure report
     const lastRunId = await getLastRunId(reportBaseDir)
@@ -114,6 +126,8 @@ try {
     await writeLastRunId(reportBaseDir, github.context.runId, runTimestamp)
     await writeLatestReport(reportBaseDir)
 
+    console.log('Debug point #7')
+
     // outputs
     core.setOutput('report_url', ghPagesReportUrl)
     core.setOutput('report_history_url', ghPagesBaseUrl)
@@ -125,5 +139,7 @@ try {
     core.setOutput('run_unique_id', runUniqueId)
     core.setOutput('report_path', reportDir)
 } catch (error) {
+    console.log('Debug point #8')
+    console.log(error.message)
     core.setFailed(error.message)
 }
