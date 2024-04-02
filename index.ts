@@ -49,6 +49,8 @@ try {
     const ghPagesBaseUrl = `${ghPagesUrl}/${baseDir}/${branchName}/${reportId}`.replaceAll(' ', '%20')
     const ghPagesReportUrl = `${ghPagesBaseUrl}/${runUniqueId}`.replaceAll(' ', '%20')
 
+    console.log(Debug point #0)
+    
     // log
     console.log({
         report_dir: sourceReportDir,
