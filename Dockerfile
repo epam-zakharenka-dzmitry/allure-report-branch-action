@@ -4,9 +4,12 @@ USER root
 
 RUN echo "=======SETTING_JAVA_11_START========"
 
-RUN apk add --no-cache openjdk11 \
-    && apk add --no-cache alternatives \
-    && alternatives --set java /usr/lib/jvm/java-11-openjdk/bin/java
+# Install openjdk11
+RUN apk add --no-cache openjdk11
+
+# Set environment variables
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV PATH="$JAVA_HOME/bin:${PATH}"
 
 # Go back to the node user
 USER node
