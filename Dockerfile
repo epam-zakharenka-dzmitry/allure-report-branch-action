@@ -18,4 +18,6 @@ RUN echo "===============" && \
 
 COPY dist /js-action
 
+RUN echo "Test print 0"
+
 ENTRYPOINT ["node", "/js-action/index.js"]
