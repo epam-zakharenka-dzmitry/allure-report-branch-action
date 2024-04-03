@@ -1,16 +1,5 @@
 FROM timbru31/java-node:17-alpine-jre-20
 
-RUN echo "=======SETTING_JAVA_11_START========"
-
-# Install openjdk11
-RUN apk add --no-cache openjdk11
-
-# Set environment variables
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
-ENV PATH="$JAVA_HOME/bin:${PATH}"
-
-RUN echo "=======SETTING_JAVA_11_END========"
-
 ARG RELEASE=2.27.0
 ARG ALLURE_REPO=https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline
 
