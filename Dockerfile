@@ -1,5 +1,22 @@
 FROM timbru31/java-node:17-alpine-jre-20
 
+USER root
+
+RUN echo "=======SETTING_JAVA_11_START========"
+
+# Install Java 11
+RUN apt-get update && \
+    apt-get install -y openjdk-11-jdk && \
+    apt-get clean;
+
+# Set Java 11 as the default
+RUN update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+
+# Go back to the node user
+USER node
+
+RUN echo "=======SETTING_JAVA_11_END========"
+
 ARG RELEASE=2.27.0
 ARG ALLURE_REPO=https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline
 
