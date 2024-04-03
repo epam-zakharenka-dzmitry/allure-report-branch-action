@@ -4,13 +4,9 @@ USER root
 
 RUN echo "=======SETTING_JAVA_11_START========"
 
-# Install Java 11
-RUN apt-get update && \
-    apt-get install -y openjdk-11-jdk && \
-    apt-get clean;
-
-# Set Java 11 as the default
-RUN update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java
+RUN apk add --no-cache openjdk11 \
+    && apk add --no-cache alternatives \
+    && alternatives --set java /usr/lib/jvm/java-11-openjdk/bin/java
 
 # Go back to the node user
 USER node
