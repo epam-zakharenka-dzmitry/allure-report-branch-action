@@ -4,6 +4,7 @@ ARG RELEASE=2.27.0
 ARG ALLURE_REPO=https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline
 
 RUN echo "===============" && \
+    echo JAVA_HOME: $JAVA_HOME && \
     echo Allure: $RELEASE && \
     echo NodeJS: $(node --version) && \
     java -version && \
