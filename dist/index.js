@@ -1,3 +1,4 @@
+process.env['JAVA_HOME'] ='/opt/java/openjdk';
 console.log("Test print 1");
 
 import { createRequire as __WEBPACK_EXTERNAL_createRequire } from "module";
