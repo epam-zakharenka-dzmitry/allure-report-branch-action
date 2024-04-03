@@ -1,5 +1,7 @@
 FROM timbru31/java-node:17-alpine-jre-20
 
+RUN echo "Current user is:" && whoami
+
 USER root
 
 RUN echo "=======SETTING_JAVA_11_START========"
